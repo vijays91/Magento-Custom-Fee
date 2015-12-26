@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Learn_Customfee>
+            <version>1.0.0</version>
+        </Learn_Customfee>
+    </modules>
+    
+    <global>    
+		<blocks>
+            <customfee>
+                <class>Learn_Customfee_Block</class>
+            </customfee>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_totals>Learn_Customfee_Block_Adminhtml_Sales_Order_Totals</sales_order_totals>   
+                    <sales_order_invoice_totals>Learn_Customfee_Block_Adminhtml_Sales_Invoice_Totals</sales_order_invoice_totals>
+                    <sales_order_creditmemo_totals>Learn_Customfee_Block_Adminhtml_Sales_Creditmemo_Totals</sales_order_creditmemo_totals>
+                </rewrite>
+            </adminhtml>
+
+            <sales>
+                <rewrite>
+                    <order_totals>Learn_Customfee_Block_Sales_Order_Totals</order_totals>
+                    <order_invoice_totals>Learn_Customfee_Block_Sales_Invoice_Totals</order_invoice_totals>
+                    <order_creditmemo_totals>Learn_Customfee_Block_Sales_Creditmemo_Totals</order_creditmemo_totals>
+                </rewrite>
+            </sales>
+        </blocks>
+
+		<helpers>
+			<customfee>
+				<class>Learn_Customfee_Helper</class>
+			</customfee>
+		</helpers>
+
+		<models>
+			<customfee>
+				<class>Learn_Customfee_Model</class>
+			</customfee>
+		</models> 
+        <sales>
+            <quote>
+                <totals>
+                    <customfee>
+                        <class>Learn_Customfee_Model_Sales_Quote_Address_Total_Customfee</class>
+                        <after>subtotal</after>
+                        <before>grand_total</before>
+                    </customfee>
+                </totals>
+            </quote>
+            <order_invoice>
+                <totals>
+                    <customfee>
+                        <class>Learn_Customfee_Model_Sales_Order_Total_Invoice_Customfee</class>
+                        <after>subtotal</after>
+                        <before>grand_total</before>
+                    </customfee>
+                </totals>
+            </order_invoice>
+            <order_creditmemo>
+                 <totals>
+                    <customfee>
+                        <class>Learn_Customfee_Model_Sales_Order_Total_Creditmemo_Customfee</class>
+                        <after>subtotal</after>
+                        <before>grand_total</before>
+                    </customfee>
+                </totals>
+            </order_creditmemo>
+        </sales>
+        <pdf>
+            <totals>
+                <customfee translate="title">
+                    <!-- <title>CUSTOM FEE</title> -->
+                    <source_field>customfee</source_field>
+                    <model>customfee/sales_pdf_customfee</model>
+                    <font_size>15</font_size>
+                    <display_zero>1</display_zero>
+                    <sort_order>201</sort_order>
+                </customfee>
+            </totals>
+        </pdf>        
+    </global>
+   
+	<default>
+		<customfee_tab>
+			<customfee_setting>
+				<customfee_active>1</customfee_active>
+				<customfee_title>Processing Fees</customfee_title>
+				<customfee_amount>30</customfee_amount>
+				<customfee_amount_type>percentage</customfee_amount_type>
+				<customfee_amount_add>+</customfee_amount_add>
+			</customfee_setting>
+		</customfee_tab>
+	</default>
+</config>
