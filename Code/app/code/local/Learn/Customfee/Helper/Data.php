@@ -12,21 +12,21 @@ class Learn_Customfee_Helper_Data extends Mage_Core_Helper_Abstract {
         return Mage::getStoreConfig($code, $store);
     }
 	
-	public function canApply($store) {
+	public function canApply($store = null) {
 		return $this->conf(self::XML_PATH_FEE_ENABLE, $store);
 	}
     
-    public function customAmount($store) {
+    public function customAmount($store = null) {
         $amount = $this->conf(self::XML_PATH_FEE_AMOUNT, $store);
         $sign = $this->conf(self::XML_PATH_FEE_ADD_MINUS, $store);
         return (string)$sign.$amount;
     }
     
-    public function customfeeType($store) {
+    public function customfeeType($store = null) {
         return $this->conf(self::XML_PATH_FEE_TYPE, $store);
     }
     
-    public function customLabel(){
+    public function customLabel($store = null){
         return $this->conf(self::XML_PATH_FEE_TITLE, $store);    
     }
 	
